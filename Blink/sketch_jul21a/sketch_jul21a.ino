@@ -22,7 +22,7 @@ void loop() {
   sw_state = digitalRead( sw_pin );  // read the switch state
 
   if ( sw_state == HIGH ) {
-    int i=450;
+    int i=4;
     while(i>0){
       if(i%30==0){
         int i2=10;
