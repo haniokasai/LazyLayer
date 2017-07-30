@@ -1,4 +1,9 @@
-// led_switch_sample1
+/*
+1、最初にLEDを押すー＞カウントスタート、テストモード
+2、1分以上スイッチに触らないと、カウントスタート
+3、一度でも、カウントボタンに触れると2に移動する
+4、15分後、大容量起動。
+*/
 
 const int led_pin = 13;              // LED connected to digital pin 13
 const int sw_pin = 2; // switch pin connected to digital pin 2
