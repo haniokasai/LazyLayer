@@ -16,8 +16,10 @@ int sw_state = LOW; // switch state
 // global var
 int waiting_time = 0;
 int bimyo_time=0;
-int limit_time = 0;
-int spark_time = 15 * 60;
+
+//config
+int limit_time = 60;
+int spark_time = 19 * 60;
 
 void setup()
 {
@@ -31,15 +33,19 @@ void loop()
     // put your main code here, to run repeatedly:
     sw_state = digitalRead(sw_pin); // read the switch state
     if (sw_state == HIGH) {
-      if(bimyo_time>2){
+      if(waiting_time ==0){
+        digitalWrite(led_pin, LOW); // sets the LED on
+      }else if(bimyo_time>2){
         waiting_time = 0;
         bimyo_time=0;
+        digitalWrite(led_pin, LOW); // sets the LED on
       }else{
         bimyo_time=bimyo_time+1;
       }
-      digitalWrite(led_pin, LOW); // sets the LED on
+      
     }
     else {
+        bimyo_time=0;
         waiting_time = waiting_time + 1;
         if (waiting_time >= limit_time) {
             int i = spark_time / 2;
